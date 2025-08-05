@@ -1,0 +1,20 @@
+name: Build and Push
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  docker-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Log in to ECR
+        uses: aws-actions/amazon-ecr-login@v1
+
+      - name: Build and Push
+        run: |
+          docker build -t ${{ secrets.ECR_REGISTRY }}/emmanuel-services:v1 ./docker
+          docker push ${{ secrets.ECR_REGISTRY }}/emmanuel-services:v1
