@@ -1,1 +1,6 @@
-
+apiVersion: v2
+name: emmanuel-services
+description: A Helm chart for deploying Emmanuel Services app
+type: application
+version: 0.1.0
+appVersion: "v1"
